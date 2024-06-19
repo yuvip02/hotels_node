@@ -4,6 +4,7 @@ const db=require("./db")
 const Person=require("./models/person")
 const MenuItem=require("./models/MenuItem")
 const bodyParser=require("body-parser")
+require("dotenv").config()
 
 app.use(bodyParser.json())//middleware
 
@@ -33,9 +34,9 @@ app.use("/person",personRoutes)
 const menuRoutes=require("./routes/menuRoutes")
 app.use("/menu",menuRoutes)
 
-
-//app starts server
-app.listen(3000,()=>
+const PORT=process.env.PORT||3000
+//app starts
+app.listen(PORT,()=>
 {
     console.log("Server listening on port 3000")
 })
